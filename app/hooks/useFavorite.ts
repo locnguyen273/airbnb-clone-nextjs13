@@ -30,7 +30,7 @@ const useFavorite = ({ listingId, currentUser }: IUserFavorite) => {
       try {
         let request;
         if (hasFavorited) {
-          request = () => axios.delete(`/api/favorites/${listingId}`)
+          request = () => axios.delete(`/api/favorites/${listingId}`);
         } else {
           request = () => axios.post(`/api/favorites/${listingId}`);
         }
@@ -40,11 +40,13 @@ const useFavorite = ({ listingId, currentUser }: IUserFavorite) => {
       } catch (error) {
         toast.error("Something went wrong.");
       }
-    }, [currentUser, hasFavorited, listingId, loginModal, router]
+    },
+    [currentUser, hasFavorited, listingId, loginModal, router]
   );
   return {
-    hasFavorited, toggleFavorite
-  }
+    hasFavorited,
+    toggleFavorite,
+  };
 };
 
 export default useFavorite;
